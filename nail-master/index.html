@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер Светлана</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #fffaf9 0%, #f8f7ff 100%);
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        header {
+            padding: 2rem 0 1.5rem;
+            background: linear-gradient(90deg, #fff5f7 0%, #f0f7ff 100%);
+            border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+            margin-bottom: 1rem;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .logo {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            color: #d87093;
+            background: linear-gradient(45deg, #d87093, #9b6b9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-weight: 300;
+            color: #7a8ca5;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            padding: 2rem 0 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 4rem;
+                padding: 3rem 0 4rem;
+            }
+        }
+
+        .left-column {
+            flex: 1;
+        }
+
+        .right-column {
+            flex: 1;
+        }
+
+        .master-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #ffebf3 0%, #e6f0ff 100%);
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(182, 162, 255, 0.1);
+            border: 1px solid rgba(255, 182, 193, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .master-photo {
+                height: 400px;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .master-photo {
+                height: 500px;
+            }
+        }
+
+        .master-info h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+            color: #5d6b82;
+        }
+
+        .description {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: #6b778c;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 240, 245, 0.6);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 3px solid #ffb6c1;
+        }
+
+        .carousel-section {
+            padding: 2.5rem 0;
+            background: rgba(240, 248, 255, 0.7);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(176, 224, 230, 0.3);
+            box-shadow: 0 4px 15px rgba(182, 162, 255, 0.08);
+        }
+
+        .carousel-title {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #7a6b9e;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .carousel-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #ffb6c1, #b6d7ff);
+        }
+
+        .carousel {
+            height: 380px;
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: #d1b6ff transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #ffb6c1, #b6d7ff);
+            border-radius: 3px;
+        }
+
+        .carousel-item>img {
+
+            height: 312px;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+
+        /* .carousel-item {
+                flex: 0 0 auto;
+                justify-content: center;
+                width: 220px;
+                height: 320px;
+                background: linear-gradient(135deg, #fff0f5 0%, #f0f8ff 100%);
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(182, 162, 255, 0.15);
+                border: 1px solid rgba(255, 182, 193, 0.2);
+                transition: transform 0.3s ease;
+            } */
+
+        .carousel-item:hover {
+            transform: translateY(-4px);
+        }
+
+        @media (min-width: 768px) {
+            .carousel-item {
+                width: 250px;
+                height: 320px;
+            }
+        }
+
+        .contacts {
+            padding: 2rem;
+            background: rgba(255, 250, 249, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(182, 162, 255, 0.1);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+
+        .contacts h2 {
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #7a6b9e;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        @media (min-width: 480px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            padding: 0.8rem;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 182, 193, 0.1);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 240, 245, 0.6);
+            transform: translateX(4px);
+        }
+
+        .contact-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffb6c1, #b6d7ff);
+            border-radius: 50%;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(182, 162, 255, 0.2);
+        }
+
+        .contact-text {
+            flex: 1;
+            word-break: break-word;
+            color: #5d6b82;
+        }
+
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: #9ba8c2;
+            font-weight: 300;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 182, 193, 0.2);
+            background: linear-gradient(90deg, #fff5f7 0%, #f0f7ff 100%);
+            border-radius: 12px 12px 0 0;
+            margin-top: 2rem;
+        }
+
+        .mobile-warning {
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #9ba8c2;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: rgba(255, 240, 245, 0.6);
+            border-radius: 6px;
+            margin: 1rem 0.5rem 0;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-warning {
+                display: block;
+            }
+        }
+
+        .highlight {
+            color: #d87093;
+            font-weight: 400;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffb6c1, #b6d7ff);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header style="padding-left: 20px;">
+            <div class="logo">Салон «Миндаль»</div>
+            <div class="tagline">Искусство в деталях</div>
+        </header>
+
+        <div class="container">
+            <div class="left-column">
+                <!-- Фото мастера -->
+                <img src="images/photo_2025-12-09_16-03-58.jpg" alt="Мастер по маникюру" class="master-photo">
+
+                <div class="master-info">
+                    <h1>Светлана, ваш мастер по маникюру</h1>
+                    <p class="description">
+                        Более 2 лет создаю элегантные и стильные ногти, сочетая классические техники с современными
+                        трендами.
+                        Каждая работа — это внимание к деталям, качественным материалам и индивидуальному подходу.
+                    </p>
+                    <p class="description">
+                        Использую только <span class="highlight">профессиональные материалы</span> и стерильные
+                        инструменты.
+                        Специализируюсь на различных техниках: классический маникюр, аппаратный, покрытие гель-лаком,
+                        укрепление ногтей.
+                    </p>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="contacts">
+                    <h2>Запись на приём</h2>
+
+                    <div class="contact-grid">
+                        <!-- Контактная информация -->
+                        <a href="tel:+79885356180" style="text-decoration: none;">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                                <div class="contact-text">+7 (988) 535-61-80</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/studio_mindal_tgn?igsh=YTAzdGY3YmZtc2Fh"
+                            style="text-decoration: none;">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                                <div class="contact-text">@studio_mindal_tgn</div>
+                            </div>
+                        </a>
+
+                        <a href="https://t.me/studio_mindal_tag" style="text-decoration: none;">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-telegram"></i></div>
+                            
+                                <div class="contact-text">@studio_mindal_tag</div>
+                            
+                        </div>
+                        </a>
+
+                        <a
+                            href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%A7%D0%B5%D1%85%D0%BE%D0%B2%D0%B0,+326%D0%B0,+%D0%A2%D0%B0%D0%B3%D0%B0%D0%BD%D1%80%D0%BE%D0%B3,+%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB.,+347939/@47.2205042,38.8620861,19z/data=!4m6!3m5!1s0x40e157c89e734d0b:0x1b690c017b062915!8m2!3d47.2206378!4d38.8625128!16s%2Fg%2F11cs7j8s1c?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D" style="text-decoration: none;">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="contact-text">г. Таганрог, ул. Чехова, 326а</div>
+                            </div>
+                        </a>
+
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                            <div class="contact-text">Пн-Пт: 9:00-19:00<br>Сб: 9:00-16:00<br>Вс: Выходной</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-section">
+            <h2 class="carousel-title">Примеры работ</h2>
+            <div class="carousel">
+                <!-- Карусель с работами -->
+                <div class="carousel-item">
+                    <img src="images/photo_1_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_2_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_3_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_4_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_5_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_6_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_7_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_8_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/photo_9_2025-12-09_17-42-11.jpg" alt="">
+                </div>
+
+            </div>
+            <div class="mobile-warning">← Прокрутите в сторону, чтобы увидеть больше работ →</div>
+        </div>
+
+
+    </div>
+
+    <!-- <script>
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const images = [
+            'work1.jpg',
+            'work2.jpg',
+            'work3.jpg',
+            'work4.jpg',
+            'work5.jpg',
+            'work6.jpg'
+        ];
+
+        carouselItems.forEach((item, index) => {
+            if (index < images.length) {
+                item.style.backgroundImage = `url(${images[index]})`;
+                item.style.backgroundSize = 'cover';
+                item.style.backgroundPosition = 'center';
+                item.style.backgroundRepeat = 'no-repeat';
+            }
+        });
+
+        function updateCarouselHeight() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const width = carouselItems[0]?.offsetWidth || 250;
+            const height = Math.floor(width * 1.12);
+            carouselItems.forEach(item => {
+                item.style.height = `${height}px`;
+            });
+        }
+
+        window.addEventListener('resize', updateCarouselHeight);
+        window.addEventListener('load', updateCarouselHeight);
+
+        // Плавный hover для мобильных устройств
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('touchstart', function () {
+                this.style.transform = 'translateX(4px)';
+                this.style.background = 'rgba(255, 240, 245, 0.6)';
+            });
+
+            item.addEventListener('touchend', function () {
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.background = '';
+                }, 300);
+            });
+        });
+    </script> -->
+</body>
+
+</html>
